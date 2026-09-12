@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🐍 Путешествие на планету Пайтон — Блокнот 1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,202 +15,212 @@
         }
 
         :root {
-            /* Фон страницы — тёплый крем */
-            --bg: #f5ede0;
+            /* Фон — глубокий сине-фиолетовый */
+            --bg: #1a1a2e;
+            --bg-2: #16213e;
+            --card: #232338;
+            --card-2: #2a2a44;
+            --line: rgba(255, 255, 255, 0.08);
 
             /* Текст */
-            --ink: #2b2823;
-            --ink-soft: #5a544b;
-            --muted: #9a9186;
-            --line: rgba(0, 0, 0, 0.06);
+            --ink: #f0eef8;
+            --ink-soft: #b8b4d0;
+            --muted: #7c7896;
 
-            /* Цвета блоков */
-            --b1: #fdf6e3;      /* кремовый */
-            --b2: #fce8e0;      /* персиковый */
-            --b3: #e6f0e8;      /* шалфей */
-            --b4: #e6eef5;      /* небесный */
-            --b5: #f0e9f5;      /* лаванда */
-            --b6: #fceee0;      /* медовый */
-            --b7: #e8f3ee;      /* мятный */
-            --b8: #f5ece0;      /* песочный */
-            --b9: #e9eef2;      /* жемчужный */
+            /* Акценты — золото и коралл */
+            --gold: #f0b95c;
+            --gold-soft: rgba(240, 185, 92, 0.12);
+            --gold-line: rgba(240, 185, 92, 0.3);
 
-            /* Акценты */
-            --sage: #7a9b87;
-            --sage-dark: #4d7a5e;
-            --sky: #7a97b3;
-            --sky-dark: #4d7095;
-            --terra: #c99070;
-            --terra-dark: #a3603c;
-            --lav: #9c8fae;
-            --lav-dark: #6b5f7d;
-            --honey: #d4a860;
-            --honey-dark: #a87b2e;
+            --coral: #ff8b7b;
+            --coral-soft: rgba(255, 139, 123, 0.12);
 
-            --code-bg: #2b2823;
-            --code-text: #e8e3da;
-            --code-comment: #8b857a;
-            --code-output: #a8c9b0;
+            --mint: #7ee0c0;
+            --mint-soft: rgba(126, 224, 192, 0.12);
+
+            --violet: #b794f6;
+            --violet-soft: rgba(183, 148, 246, 0.12);
+
+            --sky: #7cb8ff;
+            --sky-soft: rgba(124, 184, 255, 0.12);
+
+            /* Код */
+            --code-bg: #0f0f1e;
+            --code-text: #e8e6f5;
+            --code-comment: #6b6888;
+            --code-output: #7ee0c0;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
             background: var(--bg);
-            color: var(--ink);
-            line-height: 1.75;
-            padding: 32px 16px 64px;
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
             background-image:
-                radial-gradient(circle at 15% 15%, rgba(212, 168, 96, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(122, 155, 135, 0.07) 0%, transparent 40%);
+                radial-gradient(circle at 10% 5%, rgba(183, 148, 246, 0.13) 0%, transparent 45%),
+                radial-gradient(circle at 90% 95%, rgba(240, 185, 92, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 50% 50%, rgba(124, 184, 255, 0.05) 0%, transparent 60%);
             background-attachment: fixed;
+            color: var(--ink);
+            line-height: 1.8;
+            padding: 40px 16px 80px;
+            font-size: 18px;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 860px;
             margin: 0 auto;
         }
 
-        /* Все блоки — с индивидуальным цветом */
+        /* Все блоки */
         .block {
-            border-radius: 22px;
-            padding: 30px 34px;
-            margin-bottom: 22px;
-            border: 1px solid rgba(255, 255, 255, 0.9);
+            background: var(--card);
+            border-radius: 24px;
+            padding: 36px 40px;
+            margin-bottom: 24px;
+            border: 1px solid var(--line);
             box-shadow:
-                0 1px 2px rgba(43, 40, 35, 0.04),
-                0 8px 24px -8px rgba(43, 40, 35, 0.08);
+                0 4px 24px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        /* 1. Заголовок — тёплый медово-персиковый градиент */
+        /* Заголовок */
         .hero {
-            background: linear-gradient(135deg, #fce8e0 0%, #fdf6e3 60%, #f0e9f5 100%);
+            background: linear-gradient(135deg, #2a2a44 0%, #1f1f3a 50%, #2a2240 100%);
             text-align: center;
-            padding: 52px 32px;
+            padding: 60px 40px;
+            border: 1px solid var(--gold-line);
+            box-shadow:
+                0 8px 40px rgba(240, 185, 92, 0.12),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
         }
 
         .hero h1 {
-            font-size: 31px;
-            font-weight: 700;
+            font-family: 'Manrope', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
             color: var(--ink);
-            margin-bottom: 14px;
-            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #ffffff 0%, #f0b95c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero .meta {
             display: inline-flex;
             flex-wrap: wrap;
-            gap: 6px 22px;
+            gap: 8px 26px;
             justify-content: center;
-            font-size: 14px;
-            color: var(--ink-soft);
-            background: rgba(255, 255, 255, 0.7);
-            padding: 9px 22px;
-            border-radius: 30px;
-            backdrop-filter: blur(4px);
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--gold);
+            background: rgba(240, 185, 92, 0.08);
+            border: 1px solid var(--gold-line);
+            padding: 11px 26px;
+            border-radius: 40px;
+            letter-spacing: 0.01em;
         }
-
-        /* 2. Введение — кремовый */
-        .b-intro { background: var(--b1); }
-
-        /* 3. Python — персиковый */
-        .b-python { background: var(--b2); }
-        .b-python h2 .num { background: rgba(201, 144, 112, 0.18); color: var(--terra-dark); }
-
-        /* 4. Переменные — шалфейный */
-        .b-vars { background: var(--b3); }
-        .b-vars h2 .num { background: rgba(122, 155, 135, 0.2); color: var(--sage-dark); }
-
-        /* 5. Типы — небесный */
-        .b-types { background: var(--b4); }
-        .b-types h2 .num { background: rgba(122, 151, 179, 0.2); color: var(--sky-dark); }
-
-        /* 6. Арифметика — лавандовый */
-        .b-math { background: var(--b5); }
-        .b-math h2 .num { background: rgba(156, 143, 174, 0.22); color: var(--lav-dark); }
-
-        /* 7. f-строки — медовый */
-        .b-fstr { background: var(--b6); }
-        .b-fstr h2 .num { background: rgba(212, 168, 96, 0.22); color: var(--honey-dark); }
-
-        /* 8. Итоги — мятный */
-        .b-summary { background: var(--b7); }
-        .b-summary h2 .num { background: rgba(122, 155, 135, 0.22); color: var(--sage-dark); }
-
-        /* 9. Следующий — жемчужный */
-        .b-next { background: var(--b9); text-align: center; padding: 22px; }
 
         /* Заголовки */
         h2 {
-            font-size: 21px;
-            font-weight: 700;
-            margin-bottom: 18px;
+            font-size: 27px;
+            font-weight: 800;
+            margin-bottom: 22px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
             color: var(--ink);
+            letter-spacing: -0.02em;
+            line-height: 1.2;
         }
 
         h2 .num {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 34px;
-            height: 34px;
-            border-radius: 11px;
-            font-size: 15px;
-            font-weight: 700;
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: var(--gold-soft);
+            color: var(--gold);
+            font-size: 20px;
+            font-weight: 800;
             flex-shrink: 0;
-            background: rgba(122, 155, 135, 0.2);
-            color: var(--sage-dark);
+            border: 1px solid var(--gold-line);
         }
 
+        /* Разные цвета для номеров блоков */
+        .b-python h2 .num { background: var(--coral-soft); color: var(--coral); border-color: rgba(255, 139, 123, 0.3); }
+        .b-vars h2 .num { background: var(--mint-soft); color: var(--mint); border-color: rgba(126, 224, 192, 0.3); }
+        .b-types h2 .num { background: var(--sky-soft); color: var(--sky); border-color: rgba(124, 184, 255, 0.3); }
+        .b-math h2 .num { background: var(--violet-soft); color: var(--violet); border-color: rgba(183, 148, 246, 0.3); }
+        .b-fstr h2 .num { background: var(--gold-soft); color: var(--gold); border-color: var(--gold-line); }
+        .b-summary h2 .num { background: var(--mint-soft); color: var(--mint); border-color: rgba(126, 224, 192, 0.3); }
+
         h3 {
-            font-size: 17px;
-            font-weight: 600;
-            margin: 22px 0 10px;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 28px 0 14px;
             color: var(--ink);
+            letter-spacing: -0.01em;
         }
 
         p {
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             color: var(--ink-soft);
+            font-size: 17.5px;
+            line-height: 1.8;
         }
 
-        strong { color: var(--ink); }
+        strong {
+            color: var(--ink);
+            font-weight: 700;
+        }
 
         ul, ol {
-            margin: 0 0 14px 22px;
+            margin: 0 0 18px 26px;
             color: var(--ink-soft);
         }
 
-        li { margin-bottom: 6px; }
+        li {
+            margin-bottom: 9px;
+            font-size: 17.5px;
+        }
+
+        li::marker {
+            color: var(--gold);
+        }
 
         /* Инлайн-код */
         code {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 2px 7px;
-            border-radius: 5px;
-            font-family: "SF Mono", Menlo, Consolas, monospace;
-            font-size: 13.5px;
-            color: var(--terra-dark);
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            background: rgba(240, 185, 92, 0.1);
+            padding: 3px 9px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14.5px;
+            color: var(--gold);
+            border: 1px solid rgba(240, 185, 92, 0.2);
+            font-weight: 500;
         }
 
         /* Блоки кода */
         pre {
             background: var(--code-bg);
             color: var(--code-text);
-            padding: 20px 22px;
-            border-radius: 14px;
+            padding: 24px 26px;
+            border-radius: 16px;
             overflow-x: auto;
-            font-family: "SF Mono", Menlo, Consolas, monospace;
-            font-size: 13.5px;
-            line-height: 1.7;
-            margin: 16px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14.5px;
+            line-height: 1.75;
+            margin: 20px 0;
             white-space: pre-wrap;
             word-wrap: break-word;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
         pre code {
@@ -225,169 +238,206 @@
 
         .output {
             display: block;
-            margin: 14px -22px -20px -22px;
-            padding: 12px 22px;
-            background: rgba(168, 201, 176, 0.08);
-            border-top: 1px dashed rgba(168, 201, 176, 0.2);
+            margin: 18px -26px -24px -26px;
+            padding: 14px 26px;
+            background: rgba(126, 224, 192, 0.06);
+            border-top: 1px dashed rgba(126, 224, 192, 0.2);
             color: var(--code-output);
-            font-size: 13px;
-            border-radius: 0 0 14px 14px;
+            font-size: 14px;
+            border-radius: 0 0 16px 16px;
+            font-weight: 500;
         }
 
         /* Таблицы */
         .table-wrap {
             overflow-x: auto;
-            border-radius: 14px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            margin: 16px 0;
-            background: rgba(255, 255, 255, 0.5);
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            margin: 20px 0;
+            background: var(--card-2);
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 14.5px;
+            font-size: 16px;
         }
 
         th {
-            background: rgba(255, 255, 255, 0.6);
-            padding: 12px 16px;
+            background: rgba(240, 185, 92, 0.08);
+            padding: 14px 20px;
             text-align: left;
-            font-weight: 600;
-            color: var(--ink);
-            border-bottom: 2px solid rgba(0, 0, 0, 0.06);
+            font-weight: 700;
+            color: var(--gold);
+            border-bottom: 2px solid var(--gold-line);
+            font-size: 15px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
 
         td {
-            padding: 11px 16px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 13px 20px;
+            border-bottom: 1px solid var(--line);
             color: var(--ink-soft);
+            font-size: 16.5px;
         }
 
         tr:last-child td { border-bottom: none; }
-        tr:hover td { background: rgba(255, 255, 255, 0.4); }
+        tr:hover td { background: rgba(255, 255, 255, 0.03); }
 
         /* Блок задания */
         .task {
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 14px;
-            padding: 18px 22px;
-            margin: 20px 0;
-            border-left: 4px solid var(--terra);
+            background: var(--coral-soft);
+            border-radius: 16px;
+            padding: 22px 26px;
+            margin: 24px 0;
+            border-left: 4px solid var(--coral);
+            border-top: 1px solid rgba(255, 139, 123, 0.15);
+            border-right: 1px solid rgba(255, 139, 123, 0.15);
+            border-bottom: 1px solid rgba(255, 139, 123, 0.15);
         }
 
         .task-title {
-            font-weight: 700;
-            color: var(--terra-dark);
-            margin-bottom: 6px;
+            font-weight: 800;
+            color: var(--coral);
+            margin-bottom: 8px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-size: 15px;
+            gap: 10px;
+            font-size: 17px;
+            letter-spacing: 0.01em;
         }
 
         .task p {
             color: var(--ink-soft);
             margin-bottom: 0;
-            font-size: 15px;
+            font-size: 16.5px;
         }
 
         /* Блок решения */
         details {
-            margin: 12px 0 0;
-            background: rgba(255, 255, 255, 0.65);
-            border-radius: 14px;
-            border: 1px solid rgba(122, 155, 135, 0.25);
+            margin: 16px 0 0;
+            background: var(--mint-soft);
+            border-radius: 16px;
+            border: 1px solid rgba(126, 224, 192, 0.2);
             overflow: hidden;
         }
 
         summary {
-            padding: 13px 20px;
+            padding: 16px 24px;
             cursor: pointer;
-            font-weight: 600;
-            color: var(--sage-dark);
-            font-size: 14.5px;
+            font-weight: 700;
+            color: var(--mint);
+            font-size: 16px;
             user-select: none;
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: background 0.2s;
+            letter-spacing: 0.01em;
         }
 
         summary::-webkit-details-marker { display: none; }
 
         summary::before {
             content: "▸";
-            font-size: 14px;
-            transition: transform 0.2s;
+            font-size: 16px;
+            transition: transform 0.25s;
             display: inline-block;
+            color: var(--mint);
         }
 
         details[open] summary::before { transform: rotate(90deg); }
-        summary:hover { background: rgba(122, 155, 135, 0.08); }
-        details[open] summary { border-bottom: 1px solid rgba(122, 155, 135, 0.2); }
+        summary:hover { background: rgba(126, 224, 192, 0.08); }
+        details[open] summary { border-bottom: 1px solid rgba(126, 224, 192, 0.2); }
 
         details pre {
             margin: 0;
             border-radius: 0;
-            background: #1f2a24;
+            background: #0a1a15;
+            border: none;
         }
 
         /* Схема переменных */
         .vars {
             display: flex;
-            gap: 20px;
+            gap: 24px;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 24px 0;
+            margin: 28px 0;
         }
 
         .var { text-align: center; }
 
         .var-value {
-            background: rgba(255, 255, 255, 0.8);
-            border: 2px solid var(--lav);
-            border-radius: 14px;
-            padding: 14px 26px;
+            background: rgba(183, 148, 246, 0.1);
+            border: 2px solid rgba(183, 148, 246, 0.4);
+            border-radius: 16px;
+            padding: 18px 30px;
             font-weight: 700;
-            font-size: 17px;
-            color: var(--lav-dark);
+            font-size: 20px;
+            color: var(--violet);
+            font-family: 'JetBrains Mono', monospace;
+            box-shadow: 0 4px 16px rgba(183, 148, 246, 0.1);
         }
 
         .var-name {
             display: block;
-            margin-top: 8px;
-            font-family: "SF Mono", Menlo, monospace;
-            font-size: 13px;
-            color: var(--muted);
-            background: rgba(255, 255, 255, 0.7);
-            padding: 2px 12px;
+            margin-top: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--gold);
+            background: var(--gold-soft);
+            padding: 4px 14px;
             border-radius: 20px;
+            border: 1px solid var(--gold-line);
+            font-weight: 500;
+        }
+
+        /* Блок итогов */
+        .b-summary {
+            background: linear-gradient(135deg, #232338 0%, #1f2a3a 100%);
+            border: 1px solid rgba(126, 224, 192, 0.2);
         }
 
         /* Финальная плашка */
-        .next {
-            color: var(--muted);
-            font-size: 14.5px;
+        .b-next {
+            background: linear-gradient(135deg, #2a2a44 0%, #2a2240 100%);
+            text-align: center;
+            padding: 28px;
+            color: var(--ink-soft);
+            font-size: 17px;
+            border: 1px solid var(--gold-line);
         }
 
-        .next strong { color: var(--sky-dark); }
+        .b-next strong {
+            color: var(--gold);
+            font-weight: 700;
+        }
 
         /* Мобильная адаптация */
         @media (max-width: 640px) {
-            body { padding: 16px 10px 40px; font-size: 15px; }
-            .block { padding: 22px 18px; border-radius: 18px; margin-bottom: 16px; }
-            .hero { padding: 36px 18px; }
-            .hero h1 { font-size: 23px; }
-            .hero .meta { font-size: 13px; gap: 4px 14px; padding: 7px 16px; }
-            h2 { font-size: 18px; }
-            h2 .num { width: 30px; height: 30px; font-size: 14px; }
-            pre { padding: 16px 14px; font-size: 12.5px; }
-            .output { margin: 12px -14px -16px -14px; padding: 10px 14px; }
-            th, td { padding: 9px 11px; font-size: 13.5px; }
-            .vars { gap: 12px; }
-            .var-value { padding: 10px 18px; font-size: 15px; }
+            body { padding: 20px 10px 40px; font-size: 16px; }
+            .block { padding: 26px 20px; border-radius: 20px; margin-bottom: 18px; }
+            .hero { padding: 40px 20px; }
+            .hero h1 { font-size: 28px; }
+            .hero .meta { font-size: 13px; gap: 5px 16px; padding: 9px 18px; }
+            h2 { font-size: 21px; gap: 12px; }
+            h2 .num { width: 38px; height: 38px; font-size: 17px; border-radius: 12px; }
+            h3 { font-size: 17px; }
+            p, li { font-size: 15.5px; }
+            pre { padding: 18px 16px; font-size: 13px; border-radius: 14px; }
+            .output { margin: 14px -16px -18px -16px; padding: 12px 16px; font-size: 12.5px; }
+            th, td { padding: 10px 13px; font-size: 14px; }
+            th { font-size: 12.5px; }
+            code { font-size: 13px; }
+            .vars { gap: 14px; }
+            .var-value { padding: 12px 20px; font-size: 17px; }
+            .var-name { font-size: 12.5px; padding: 3px 11px; }
+            .task { padding: 18px 18px; }
+            .task-title { font-size: 15.5px; }
+            summary { font-size: 14.5px; padding: 14px 18px; }
         }
     </style>
 </head>
@@ -405,7 +455,7 @@
         </div>
 
         <!-- ВВЕДЕНИЕ -->
-        <div class="block b-intro">
+        <div class="block">
             <p>Добро пожаловать! За следующие 15 минут вы напишете свои первые строки на Python — языке, лежащем в основе современных методов обработки данных и искусственного интеллекта. Опыт программирования не требуется.</p>
 
             <h3>🎯 Чему вы научитесь</h3>
