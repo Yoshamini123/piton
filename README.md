@@ -1,13 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🐍 Путешествие на планету Пайтон — Блокнот 1</title>
-    <!-- Шрифты и иконки -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -16,630 +12,497 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #f8fafc;
-            color: #0b1b2f;
-            line-height: 1.6;
-            padding: 2rem 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.7;
+            padding: 40px 20px;
         }
 
-        .notebook {
-            max-width: 1000px;
+        .container {
+            max-width: 780px;
             margin: 0 auto;
-            background: white;
-            border-radius: 2rem;
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15), 0 4px 18px rgba(0, 0, 0, 0.05);
-            padding: 2.5rem 2.2rem;
-            border: 1px solid #e9eef3;
         }
 
         /* Заголовок */
-        .hero {
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.8rem;
-            border-bottom: 2px dashed #d0dae8;
-        }
-
-        .hero h1 {
-            font-size: 2.4rem;
+        h1 {
+            font-size: 28px;
             font-weight: 700;
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #0b2b4b;
-            margin-bottom: 0.75rem;
+            margin-bottom: 8px;
+            line-height: 1.3;
         }
 
-        .hero h1 i {
-            font-size: 2.2rem;
-            color: #2b6f9e;
-        }
-
-        .meta-bar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem 2rem;
-            background: #eef5fa;
-            padding: 0.9rem 1.5rem;
-            border-radius: 100px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #1e4b6e;
-        }
-
-        .meta-bar span {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .meta-bar i {
-            color: #2b6f9e;
-            width: 1.2rem;
-            text-align: center;
+        .subtitle {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 40px;
         }
 
         /* Секции */
-        section {
-            margin-bottom: 3rem;
-        }
-
         h2 {
-            font-size: 1.8rem;
+            font-size: 20px;
             font-weight: 700;
-            letter-spacing: -0.01em;
-            color: #0b2b4b;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        h2 i {
-            font-size: 1.6rem;
-            color: #2b6f9e;
-            background: #e2eef9;
-            padding: 8px;
-            border-radius: 14px;
+            margin-top: 48px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #eee;
         }
 
         h3 {
-            font-size: 1.3rem;
+            font-size: 17px;
             font-weight: 600;
-            margin: 1.8rem 0 1rem;
-            color: #17456b;
+            margin-top: 28px;
+            margin-bottom: 12px;
         }
 
         p {
-            margin-bottom: 1rem;
-            color: #1f3a54;
+            margin-bottom: 14px;
+            font-size: 15px;
         }
 
-        /* Карточки целей */
-        .goals-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.85rem;
-            margin: 1.5rem 0;
+        /* Списки */
+        ul, ol {
+            margin: 0 0 16px 24px;
         }
 
-        .goal-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            background: #f4faff;
-            padding: 0.9rem 1.2rem;
-            border-radius: 16px;
-            border-left: 5px solid #2b6f9e;
-            transition: transform 0.1s ease;
+        li {
+            margin-bottom: 6px;
+            font-size: 15px;
         }
 
-        .goal-item:hover {
-            transform: translateX(4px);
-            background: #ecf6ff;
+        /* Код */
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 13px;
+            color: #c7254e;
         }
 
-        .goal-item i {
-            color: #2b6f9e;
-            font-size: 1.2rem;
-            margin-top: 3px;
-        }
-
-        /* Блоки кода */
-        .code-block {
-            background: #0d1e2e;
-            color: #e3eaf1;
-            border-radius: 18px;
-            padding: 1.5rem 1.8rem;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            margin: 1.5rem 0;
-            overflow-x: auto;
-            white-space: pre-wrap;
-            word-break: break-word;
-            box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.3);
-            border: 1px solid #2a4055;
-        }
-
-        .code-block .comment {
-            color: #7a9bb5;
-        }
-
-        .code-block .output {
-            color: #b3d9ff;
-            background: #152b3d;
-            display: block;
-            padding: 0.4rem 1rem;
-            margin: 0.8rem -1rem 0;
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 16px 20px;
             border-radius: 8px;
-            border-left: 4px solid #3b9bd8;
-            font-style: italic;
-            font-size: 0.9rem;
+            overflow-x: auto;
+            font-family: "SF Mono", Menlo, Consolas, monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            margin: 16px 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
-        .inline-code {
-            background: #e8eef5;
-            padding: 0.2rem 0.5rem;
-            border-radius: 6px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.85rem;
-            color: #1d4e7a;
-            border: 1px solid #d0ddee;
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+            font-size: inherit;
+        }
+
+        /* Комментарии в коде */
+        .comment {
+            color: #6a9955;
+        }
+
+        /* Вывод программы */
+        .output {
+            display: block;
+            background: #2d2d2d;
+            color: #9cdcfe;
+            padding: 8px 16px;
+            margin: 8px -20px -16px -20px;
+            border-radius: 0 0 8px 8px;
+            font-size: 12px;
+            border-top: 1px solid #444;
         }
 
         /* Таблицы */
-        .table-wrap {
-            overflow-x: auto;
-            margin: 1.5rem 0;
-            border-radius: 16px;
-            border: 1px solid #dce5f0;
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.95rem;
-            background: white;
+            margin: 16px 0;
+            font-size: 14px;
         }
 
         th {
-            background: #e5eff9;
-            padding: 0.9rem 1.2rem;
+            background: #f5f5f5;
+            padding: 10px 12px;
             text-align: left;
             font-weight: 600;
-            color: #0b2b4b;
-            border-bottom: 2px solid #cbdae9;
+            border: 1px solid #ddd;
         }
 
         td {
-            padding: 0.8rem 1.2rem;
-            border-bottom: 1px solid #e3ebf4;
+            padding: 10px 12px;
+            border: 1px solid #ddd;
         }
 
-        tr:last-child td {
-            border-bottom: none;
+        /* Блоки заданий */
+        .task {
+            background: #f8f9fa;
+            border-left: 4px solid #4a9eff;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
         }
 
-        tr:hover td {
-            background: #f6faff;
+        .task strong {
+            color: #1a1a1a;
         }
 
-        /* Диаграмма переменных */
-        .var-diagram {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2.5rem;
-            margin: 2rem 0;
-            text-align: center;
+        /* Решения (раскрывающиеся) */
+        details {
+            margin: 12px 0 20px;
+            background: #f0f7f0;
+            border-radius: 8px;
+            border: 1px solid #d0e0d0;
         }
 
-        .var-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .box-value {
-            background: #eaf2fb;
-            border: 2px solid #2b6f9e;
-            border-radius: 14px;
-            padding: 0.8rem 1.8rem;
-            font-weight: 600;
-            color: #0b2b4b;
-            font-size: 1.1rem;
-            box-shadow: 0 6px 0 #b3cde0;
-        }
-
-        .box-label {
-            margin-top: 8px;
-            font-family: 'JetBrains Mono', monospace;
-            background: #1f3a54;
-            color: white;
-            padding: 0.2rem 1rem;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        /* Кнопки-аккордеоны */
-        .accordion {
-            background: #f3f8ff;
-            border-radius: 14px;
-            padding: 0.8rem 1.5rem;
-            margin: 1.5rem 0 0.5rem;
-            border: 1px solid #cfdff0;
+        summary {
+            padding: 10px 16px;
             cursor: pointer;
             font-weight: 600;
-            color: #1a4970;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: background 0.2s;
+            color: #2e6b2e;
+            font-size: 14px;
             user-select: none;
         }
 
-        .accordion i {
-            transition: transform 0.25s;
+        summary:hover {
+            background: #e8f3e8;
         }
 
-        .accordion.open i {
-            transform: rotate(90deg);
+        details[open] summary {
+            border-bottom: 1px solid #d0e0d0;
         }
 
-        .accordion:hover {
-            background: #e7f0fc;
+        details pre {
+            margin: 0;
+            border-radius: 0 0 8px 8px;
+            background: #1a2e1a;
         }
 
-        .solution {
-            display: none;
-            background: #f0f9f0;
-            padding: 1.4rem 1.8rem;
-            border-radius: 0 0 16px 16px;
-            border-left: 6px solid #2e8b57;
-            margin-top: -4px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.9rem;
-            white-space: pre-wrap;
-            color: #1b4d1b;
-            border: 1px solid #b8ddb8;
-            border-top: none;
-        }
-
-        .solution.show {
-            display: block;
-        }
-
-        /* Вызовы к действию */
-        .try-it {
-            background: linear-gradient(135deg, #f9fcff 0%, #eaf3fc 100%);
-            padding: 1.8rem 2rem;
-            border-radius: 24px;
-            margin: 2rem 0;
-            border: 1px solid #c7dcf0;
-            box-shadow: inset 0 1px 4px rgba(255, 255, 255, 0.8);
-        }
-
-        .try-it h3 {
-            margin-top: 0;
+        /* Схема переменных */
+        .vars {
             display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #0e3d63;
-        }
-
-        .try-it h3 i {
-            color: #e6a017;
-        }
-
-        .badge {
-            display: inline-block;
-            background: #d4e6fa;
-            padding: 0.2rem 0.9rem;
-            border-radius: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.3px;
-            text-transform: uppercase;
-            color: #1d4e7a;
-        }
-
-        .footer-note {
-            margin-top: 3rem;
-            padding-top: 1.8rem;
-            border-top: 2px dashed #cbdae9;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            gap: 20px;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 1rem;
-            color: #3a5b7a;
-            font-weight: 500;
+            margin: 24px 0;
         }
 
-        .footer-note a {
-            color: #1d6fa5;
-            text-decoration: none;
+        .var {
+            text-align: center;
+        }
+
+        .var-value {
+            background: #e8f0fe;
+            border: 2px solid #4a9eff;
+            border-radius: 8px;
+            padding: 12px 24px;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 16px;
         }
 
-        .footer-note a:hover {
-            text-decoration: underline;
+        .var-name {
+            display: block;
+            margin-top: 6px;
+            font-family: monospace;
+            font-size: 13px;
+            color: #666;
         }
 
-        /* Адаптивность */
-        @media (max-width: 650px) {
-            .notebook {
-                padding: 1.8rem 1.2rem;
-            }
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            .meta-bar {
-                border-radius: 20px;
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-            h2 {
-                font-size: 1.5rem;
-            }
-            .code-block {
-                padding: 1.2rem 1rem;
-                font-size: 0.85rem;
-            }
-            .var-diagram {
-                gap: 1.2rem;
-            }
+        /* Разделитель */
+        hr {
+            border: none;
+            border-top: 1px solid #eee;
+            margin: 40px 0;
         }
 
-        /* Дополнительные утилиты */
-        .mt-2 { margin-top: 1.5rem; }
-        .mb-2 { margin-bottom: 1.5rem; }
-        .text-accent { color: #2b6f9e; font-weight: 600; }
-        .highlight { background: #fff2cc; padding: 0.1rem 0.3rem; border-radius: 4px; }
+        /* Адаптив */
+        @media (max-width: 600px) {
+            body { padding: 20px 14px; }
+            h1 { font-size: 22px; }
+            h2 { font-size: 18px; }
+            pre { padding: 12px 14px; font-size: 12px; }
+            .output { margin: 8px -14px -12px -14px; padding: 8px 14px; }
+            .vars { gap: 12px; }
+            .var-value { padding: 8px 16px; font-size: 14px; }
+        }
     </style>
 </head>
 <body>
-    <div class="notebook">
-        <!-- Шапка -->
-        <div class="hero">
-            <h1>
-                <i class="fas fa-snake"></i> 
-                Путешествие на планету Пайтон
-            </h1>
-            <div class="meta-bar">
-                <span><i class="fas fa-track"></i> Вводная сессия — Блокнот 1 из 5</span>
-                <span><i class="fas fa-clock"></i> ~15 мин</span>
-                <span><i class="fas fa-graduation-cap"></i> для начинающих</span>
+    <div class="container">
+
+        <!-- Заголовок -->
+        <h1>🐍 Путешествие на планету Пайтон</h1>
+        <p class="subtitle">Вводная сессия — Блокнот 1 из 5 · ~15 мин · для начинающих</p>
+
+        <p>Добро пожаловать! За следующие 15 минут вы напишете свои первые строки на Python — языке, лежащем в основе современных методов обработки данных и искусственного интеллекта. Опыт программирования не требуется.</p>
+
+        <!-- Цели -->
+        <h2>🎯 Чему вы научитесь</h2>
+        <ul>
+            <li>Запускать код в Jupyter Notebook</li>
+            <li>Понимать базовый синтаксис Python</li>
+            <li>Сохранять значения в переменных</li>
+            <li>Различать четыре типа данных: <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code></li>
+            <li>Выполнять вычисления и делать красивый вывод с помощью f-строк</li>
+        </ul>
+
+        <!-- 1 -->
+        <h2>1. Что такое Python?</h2>
+        <p>Python — это язык программирования, то есть способ давать компьютеру точные инструкции. Он читается почти как английский, поэтому идеально подходит для начинающих.</p>
+        <p>Эта страница — блокнот Jupyter. В нём есть текстовые ячейки (как эта) и ячейки с кодом. Чтобы запустить код: щёлкните по ячейке и нажмите <code>Shift + Enter</code>.</p>
+
+        <p>Попробуйте — запустите первую программу:</p>
+
+<pre><code><span class="comment"># Всё после # — комментарий, Python его игнорирует</span>
+print("Привет, Python! 🐍")
+<span class="output">Привет, Python! 🐍</span></code></pre>
+
+        <p>🎉 Вы только что запустили свою первую программу!</p>
+
+        <p>Главное запомнить:</p>
+        <ul>
+            <li>Python читает код <strong>сверху вниз</strong></li>
+            <li>Всё после <code>#</code> — комментарий для людей</li>
+            <li>Порядок запуска ячеек важен</li>
+            <li>Вы ничего не сломаете — экспериментируйте!</li>
+        </ul>
+
+        <!-- 2 -->
+        <h2>2. Переменные — коробки с подписями</h2>
+        <p>Переменная — это имя для значения. Как коробка с этикеткой:</p>
+
+        <div class="vars">
+            <div class="var">
+                <div class="var-value">"Alice"</div>
+                <span class="var-name">name</span>
+            </div>
+            <div class="var">
+                <div class="var-value">25</div>
+                <span class="var-name">age</span>
+            </div>
+            <div class="var">
+                <div class="var-value">1.70</div>
+                <span class="var-name">height</span>
             </div>
         </div>
 
-        <!-- Приветствие -->
-        <section>
-            <p style="font-size: 1.1rem;">Добро пожаловать! В течение следующих 15 минут вы напишете свои первые строки на Python — языке, который лежит в основе большинства современных методов обработки данных и искусственного интеллекта. Опыт программирования не требуется: мы не торопимся, и все необходимое вы найдете на этой странице.</p>
-        </section>
+        <p>Знак <code>=</code> читается как «получает». <code>age = 25</code> означает: коробка с меткой <code>age</code> получает значение 25.</p>
 
-        <!-- Цели обучения -->
-        <section>
-            <h2><i class="fas fa-bullseye"></i> 🎯 Цели обучения</h2>
-            <p>К концу этого курса вы сможете:</p>
-            <div class="goals-grid">
-                <div class="goal-item"><i class="fas fa-check-circle"></i> Запускать код в Jupyter Notebook (и узнаете, что такое ноутбук).</div>
-                <div class="goal-item"><i class="fas fa-check-circle"></i> Ознакомиться с базовым синтаксисом Python: операторы идут сверху вниз, а <span class="inline-code">#</span> комментарии — слева направо.</div>
-                <div class="goal-item"><i class="fas fa-check-circle"></i> Сохранять значения в переменных и использовать их повторно.</div>
-                <div class="goal-item"><i class="fas fa-check-circle"></i> Назвать четыре основных типа данных — <span class="inline-code">int</span>, <span class="inline-code">float</span>, <span class="inline-code">str</span>, <span class="inline-code">bool</span> — и проверить их с помощью <span class="inline-code">type()</span>.</div>
-                <div class="goal-item"><i class="fas fa-check-circle"></i> Выполнить арифметические вычисления на Python и создать удобочитаемый вывод с помощью f-строк.</div>
-            </div>
-            <p><span class="badge">✅ Предпосылки</span> Ничего, кроме браузера, не нужно.</p>
-            <p style="margin-top: 0.8rem;">➡️ <strong>Следующий:</strong> 02_data_structures.ipynb</p>
-        </section>
+<pre><code>name = "Alice"
+age = 25
+height = 1.70
 
-        <!-- 1. Привет -->
-        <section>
-            <h2><i class="fas fa-hand-wave"></i> 1. Привет! Что такое Python и что представляет собой эта страница?</h2>
-            <p>Python — это язык программирования, то есть способ давать компьютеру точные и воспроизводимые инструкции. Он доминирует в сфере обработки данных и искусственного интеллекта по двум причинам: он читается почти как английский, и на его основе огромное сообщество создало бесплатные инструменты — для таблиц данных, графиков, машинного обучения. Когда исследователи анализируют данные опросов, когда больница строит модель рисков, когда обучается современная система искусственного интеллекта, почти наверняка используется Python.</p>
-            <p>Эта страница представляет собой блокнот Jupyter. В нем сочетаются два типа ячеек:</p>
-            <ul style="margin-left: 1.8rem; margin-bottom: 1.2rem;">
-                <li><strong>Текстовые ячейки</strong> (как эта) — примечания и пояснения.</li>
-                <li><strong>Ячейки с кодом</strong> — настоящий Python, который вы можете запустить.</li>
-            </ul>
-            <p>Чтобы запустить ячейку с кодом: щелкните по ней, затем нажмите <span class="inline-code">Shift + Enter</span> (или нажмите кнопку ▶). Результат появится прямо под ячейкой.</p>
-            <p>Это действительно все, что вам нужно знать. Давайте запустим вашу первую программу — щелкните по ячейке ниже и нажмите <strong>Shift + Enter</strong>:</p>
+print(name)
+print(age)
+print(height)
 
-            <div class="code-block">
-                <span class="comment"># Все, что идет после символа #, является комментарием — заметкой для людей. Python игнорирует их.</span><br><br>
-                print("Привет, Python! 🐍")
-                <span class="output">Привет, Python! 🐍</span>
-            </div>
+<span class="comment"># Переменные можно использовать повторно</span>
+birth_year = 2026 - age
+print(birth_year)
+<span class="output">Alice
+25
+1.7
+2001</span></code></pre>
 
-            <p>🎉 <strong>Вы только что запустили свою первую программу.</strong> Команда <span class="inline-code">print(...)</span> указывает Python на необходимость вывести на экран все, что находится в скобках.</p>
-            <p>Первое знакомство с тем, как устроен код на Python:</p>
-            <ul style="margin-left: 1.8rem; margin-bottom: 1.2rem;">
-                <li>Python считывает ячейку <strong>сверху вниз</strong>, по одному выражению в строке, и выполняет именно то, что указано в каждой строке, — в указанном порядке.</li>
-                <li>Все, что находится после <span class="inline-code">#</span>, является <strong>комментарием</strong>: только для читателей-людей, Python его игнорирует.</li>
-                <li>Python также учитывает структуру строки: пробелы в начале строки имеют значение, а не служат для украшения. Пока нам это не нужно — это станет главной темой Notebook 3.</li>
-            </ul>
-            <p>И два практических совета для сеанса:</p>
-            <ul style="margin-left: 1.8rem;">
-                <li>Важен порядок, в котором вы запускаете ячейки, а не порядок их отображения на странице. Если что-то пошло не так, используйте Runtime → Перезапустить и запустить все (Colab), чтобы начать заново.</li>
-                <li>Вы ничего не сломаете. Экспериментируйте смело — на ошибках все учатся программировать.</li>
-            </ul>
-            <p style="margin-top: 1.2rem; background: #f0f7fe; padding: 0.8rem 1.2rem; border-radius: 16px;">💬 <strong>Обсудить (30 секунд, с соседом):</strong> Где вы уже сталкивались с чем-то, созданным на основе данных или искусственного интеллекта, в вашей сфере деятельности или в повседневной жизни?</p>
-        </section>
+        <p>Обратите внимание: мы ввели <code>1.70</code>, а Python вывел <code>1.7</code>. Python хранит значение, а не формат записи.</p>
 
-        <!-- 2. Переменные -->
-        <section>
-            <h2><i class="fas fa-box"></i> 2. Переменные — поля с подписями для ваших данных</h2>
-            <p>Прежде чем компьютер сможет работать со значением, ему нужно где-то его сохранить. Переменная — это имя, присвоенное значению. Представьте, что это коробка с этикеткой:</p>
+        <p><strong>Правила именования:</strong></p>
+        <ul>
+            <li><code>snake_case</code>: слова в нижнем регистре через подчёркивание — <code>birth_year</code></li>
+            <li>Имена должны отражать смысл: <code>temperature</code> лучше, чем <code>t</code></li>
+        </ul>
 
-            <div class="var-diagram">
-                <div class="var-box">
-                    <div class="box-value">"Alice"</div>
-                    <div class="box-label">name</div>
-                </div>
-                <div class="var-box">
-                    <div class="box-value">25</div>
-                    <div class="box-label">age</div>
-                </div>
-                <div class="var-box">
-                    <div class="box-value">1.70</div>
-                    <div class="box-label">height</div>
-                </div>
-            </div>
+        <div class="task">
+            <strong>🎯 Попробуйте:</strong> создайте переменные <code>my_name</code> (ваше имя в кавычках) и <code>my_age</code> (число). Выведите обе через <code>print()</code>.
+        </div>
 
-            <p>Вы помещаете значение в поле со знаком <span class="inline-code">=</span> (читается как "gets", а не "equals"): <span class="inline-code">age = 25</span> означает "поле с меткой age получает значение 25". С этого момента запись <span class="inline-code">age</span> в любом месте означает "заглянуть в это поле".</p>
+<pre><code>my_name = "..."
+my_age = 0
+print(my_name)
+print(my_age)</code></pre>
 
-            <div class="code-block">
-                name = "Alice"      <span class="comment"># text goes in quotes</span><br>
-                age = 25            <span class="comment"># a whole number</span><br>
-                height = 1.70       <span class="comment"># a decimal number</span><br><br>
-                print(name)<br>
-                print(age)<br>
-                print(height)<br><br>
-                <span class="comment"># Variables can be reused and combined:</span><br>
-                birth_year = 2026 - age<br>
-                print(birth_year)
-                <span class="output">Alice<br>25<br>1.7<br>2001</span>
-            </div>
+        <details>
+            <summary>💡 Показать решение</summary>
+<pre><code>my_name = "Мария"
+my_age = 28
+print(my_name)
+print(my_age)
+<span class="output">Мария
+28</span></code></pre>
+        </details>
 
-            <p>Читаем вывод: первые три строки просто показывают, что находится внутри каждого блока. Один небольшой сюрприз: мы ввели <span class="inline-code">1.70</span>, но Python вывел <span class="inline-code">1.7</span> — Python сохраняет значение числа, а не то, как вы его ввели. (Приведение чисел к виду, удобному для восприятия человеком, — отдельная задача, и в разделе 5 есть инструмент именно для этого.) Последняя строка демонстрирует настоящую мощь: мы вычислили новое значение на основе существующего. Если <span class="inline-code">age</span> изменится, мы внесем изменения в одно место, и все последующие изменения обновятся.</p>
+        <!-- 3 -->
+        <h2>3. Типы данных</h2>
+        <p>В Python у каждого значения есть тип. Четыре основных:</p>
 
-            <p>Запомните два правила именования (есть и другие, но этих достаточно):</p>
-            <ul style="margin-left: 1.8rem;">
-                <li>Имена записываются в <strong>snake_case</strong>: слова в нижнем регистре, разделенные подчеркиванием, например <span class="inline-code">birth_year</span>, <span class="inline-code">coffee_price</span>.</li>
-                <li>Выбирайте названия, которые отражают значение — <span class="inline-code">temperature</span> лучше, чем <span class="inline-code">t</span>.</li>
-            </ul>
+        <table>
+            <thead>
+                <tr><th>Тип</th><th>Имя</th><th>Пример</th><th>Для чего</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Целое</td><td><code>int</code></td><td>42</td><td>количество, годы</td></tr>
+                <tr><td>Дробное</td><td><code>float</code></td><td>19.99</td><td>цены, измерения</td></tr>
+                <tr><td>Текст</td><td><code>str</code></td><td>"Berlin"</td><td>имена, названия</td></tr>
+                <tr><td>Да/Нет</td><td><code>bool</code></td><td>True, False</td><td>флаги, проверки</td></tr>
+            </tbody>
+        </table>
 
-            <!-- Try it -->
-            <div class="try-it">
-                <h3><i class="fas fa-pencil-alt"></i> 🎯 Попробуйте (1–2 минуты) — свои собственные коробки</h3>
-                <p>В ячейке ниже создайте две переменные: <span class="inline-code">my_name</span> (ваше имя в кавычках) и <span class="inline-code">my_age</span> (число). Затем <span class="inline-code">print</span> обе. Запустите ячейку, чтобы проверить.</p>
-                <div class="code-block">
-                    <span class="comment"># Your turn 👇  Replace the example values with your own, then press Shift + Enter.</span><br><br>
-                    my_name = "..."<br>
-                    my_age = 0<br><br>
-                    print(my_name)<br>
-                    print(my_age)
-                    <span class="output">...<br>0</span>
-                </div>
-                <div class="accordion" onclick="toggleSolution(this)">
-                    <i class="fas fa-chevron-right"></i> 💡 Нажмите, чтобы увидеть решение
-                </div>
-                <div class="solution">
-                    my_name = "Мария"<br>
-                    my_age = 28<br><br>
-                    print(my_name)<br>
-                    print(my_age)<br>
-                    <span style="color: #2e6b2e;"># Вывод:<br># Мария<br># 28</span>
-                </div>
-            </div>
-        </section>
+        <p>Проверить тип можно функцией <code>type()</code>:</p>
 
-        <!-- 3. Типы данных -->
-        <section>
-            <h2><i class="fas fa-tags"></i> 3. Типы данных — не все значения одинаковы</h2>
-            <p>Посмотрите на электронную таблицу из любой области: в одних столбцах содержатся целые числа (участники), в других — десятичные дроби (измерения), в третьих — текст (названия городов), а в четвертых — ответы «да» или «нет». В Python то же самое. Четыре типа данных, с которыми вы будете сталкиваться каждый день:</p>
+<pre><code>participants = 42          <span class="comment"># int</span>
+average_temp = 21.5        <span class="comment"># float</span>
+city = "Berlin"            <span class="comment"># str</span>
+survey_complete = True     <span class="comment"># bool</span>
 
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr><th>Тип</th><th>Имя Python</th><th>Пример</th><th>Типичное использование</th></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Целое число</td><td><span class="inline-code">int</span></td><td>42</td><td>количество, годы, идентификаторы</td></tr>
-                        <tr><td>Десятичное число</td><td><span class="inline-code">float</span></td><td>19.99</td><td>измерения, цены, средние значения</td></tr>
-                        <tr><td>Текст ("строка")</td><td><span class="inline-code">str</span></td><td>"Berlin"</td><td>имена, ярлыки, ответы</td></tr>
-                        <tr><td>Да/Нет</td><td><span class="inline-code">bool</span></td><td>True, False</td><td>флаги, результаты сравнения</td></tr>
-                    </tbody>
-                </table>
-            </div>
+print(type(participants))
+print(type(average_temp))
+print(type(city))
+print(type(survey_complete))
+<span class="output">&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;
+&lt;class 'bool'&gt;</span></code></pre>
 
-            <p>Добавить кодовую ячейку <span class="inline-code">Ctrl+M B</span> <span class="inline-code">type()</span></p>
+        <p><strong>Важно:</strong> <code>"42"</code> (в кавычках) — это текст, а не число. <code>"42" + 1</code> вызовет ошибку, а <code>42 + 1</code> даст <code>43</code>.</p>
 
-            <div class="code-block">
-                participants = 42          <span class="comment"># int</span><br>
-                average_temp = 21.5        <span class="comment"># float</span><br>
-                city = "Berlin"            <span class="comment"># str</span><br>
-                survey_complete = True     <span class="comment"># bool</span><br><br>
-                print(type(participants))<br>
-                print(type(average_temp))<br>
-                print(type(city))<br>
-                print(type(survey_complete))
-                <span class="output">&lt;class 'int'&gt;<br>&lt;class 'float'&gt;<br>&lt;class 'str'&gt;<br>&lt;class 'bool'&gt;</span>
-            </div>
+        <div class="task">
+            <strong>🎯 Попробуйте:</strong> предскажите тип каждого значения, потом запустите код и проверьте.
+        </div>
 
-            <p>При чтении вывода: <span class="inline-code">&lt;class 'int'&gt;</span> выглядит более драматично, чем есть на самом деле. Слово в кавычках — это ответ — <span class="inline-code">int</span>, <span class="inline-code">float</span>, <span class="inline-code">str</span>, <span class="inline-code">bool</span>. (<span class="inline-code">class</span> — это просто собственное слово Python для обозначения «типа значения»; пока можете его не учитывать.)</p>
-            <p>Зачем нужны типы? Потому что типы определяют, что вы можете сделать со значением. Вы можете перемножить два числа, но <span class="inline-code">"Berlin" * "Hamburg"</span> не имеет смысла — и Python вам об этом сообщит. Самая распространенная ошибка новичков: <span class="inline-code">"42"</span> (в кавычках) — это текст, а не число. <span class="inline-code">"42" + 1</span> приводит к ошибке; <span class="inline-code">42 + 1</span> приводит к <span class="inline-code">43</span>.</p>
+<pre><code>print(type(7))
+print(type(7.0))
+print(type("7"))
+print(type(7 > 3))
+<span class="output">&lt;class 'int'&gt;
+&lt;class 'float'&gt;
+&lt;class 'str'&gt;
+&lt;class 'bool'&gt;</span></code></pre>
 
-            <div class="try-it">
-                <h3><i class="fas fa-pencil-alt"></i> 🎯 Попробуйте (1–2 минуты) — Угадайте тип</h3>
-                <p>Прежде чем запустить приведенную ниже ячейку, предскажите тип каждого значения. Затем запустите ее и проверьте свои предположения. (Подсказка для последней строки: считайте <span class="inline-code">7 > 3</span> вопросом — «7 больше 3?». Какой ответ можно дать на вопрос, требующий ответа «да» или «нет»?)</p>
-                <div class="code-block">
-                    <span class="comment"># Сначала предскажи, потом действуй!</span><br>
-                    print(type(7))<br>
-                    print(type(7.0))<br>
-                    print(type("7"))<br>
-                    print(type(7 > 3))
-                    <span class="output">&lt;class 'int'&gt;<br>&lt;class 'float'&gt;<br>&lt;class 'str'&gt;<br>&lt;class 'bool'&gt;</span>
-                </div>
-                <div class="accordion" onclick="toggleSolution(this)">
-                    <i class="fas fa-chevron-right"></i> 💡 Нажмите, чтобы увидеть решение
-                </div>
-                <div class="solution">
-                    print(type(7))       # &lt;class 'int'&gt;<br>
-                    print(type(7.0))     # &lt;class 'float'&gt;<br>
-                    print(type("7"))     # &lt;class 'str'&gt;<br>
-                    print(type(7 > 3))   # &lt;class 'bool'&gt;
-                </div>
-            </div>
-        </section>
+        <details>
+            <summary>💡 Показать решение</summary>
+<pre><code>print(type(7))       <span class="comment"># int</span>
+print(type(7.0))     <span class="comment"># float</span>
+print(type("7"))     <span class="comment"># str</span>
+print(type(7 > 3))   <span class="comment"># bool</span></code></pre>
+        </details>
 
-        <!-- 4. Арифметика -->
-        <section>
-            <h2><i class="fas fa-calculator"></i> 4. Арифметика — Python как очень надежный калькулятор</h2>
-            <p>Python знает операторы из школьной математики:</p>
+        <!-- 4 -->
+        <h2>4. Арифметика</h2>
+        <p>Python — отличный калькулятор. Основные операторы:</p>
 
-            <div class="table-wrap">
-                <table>
-                    <thead><tr><th>Оператор</th><th>Значение</th><th>Пример</th><th>Результат</th></tr></thead>
-                    <tbody>
-                        <tr><td><span class="inline-code">+</span></td><td>дополнение</td><td>7 + 3</td><td>10</td></tr>
-                        <tr><td><span class="inline-code">-</span></td><td>вычитание</td><td>7 - 3</td><td>4</td></tr>
-                        <tr><td><span class="inline-code">*</span></td><td>умножение</td><td>7 * 3</td><td>21</td></tr>
-                        <tr><td><span class="inline-code">/</span></td><td>разделение</td><td>7 / 2</td><td>3.5</td></tr>
-                        <tr><td><span class="inline-code">**</span></td><td>сила</td><td>2 ** 10</td><td>1024</td></tr>
-                    </tbody>
-                </table>
-            </div>
+        <table>
+            <thead>
+                <tr><th>Оператор</th><th>Действие</th><th>Пример</th><th>Результат</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>+</code></td><td>сложение</td><td>7 + 3</td><td>10</td></tr>
+                <tr><td><code>-</code></td><td>вычитание</td><td>7 - 3</td><td>4</td></tr>
+                <tr><td><code>*</code></td><td>умножение</td><td>7 * 3</td><td>21</td></tr>
+                <tr><td><code>/</code></td><td>деление</td><td>7 / 2</td><td>3.5</td></tr>
+                <tr><td><code>**</code></td><td>степень</td><td>2 ** 10</td><td>1024</td></tr>
+            </tbody>
+        </table>
 
-            <p>Давайте объединим переменные и арифметику, чтобы произвести небольшой реальный расчет — сколько стоит ежедневная привычка пить кофе в год:</p>
+        <p>Пример: сколько стоит кофе в год?</p>
 
-            <div class="code-block">
-                coffee_price = 3.20        <span class="comment"># euros per cup</span><br>
-                cups_per_day = 2<br>
-                days_per_year = 365<br><br>
-                yearly_cost = coffee_price * cups_per_day * days_per_year<br>
-                print("Coffee per year, in euros:")<br>
-                print(yearly_cost)
-                <span class="output">Кофе в год, в евро:<br>2336.0</span>
-            </div>
+<pre><code>coffee_price = 3.20
+cups_per_day = 2
+days_per_year = 365
 
-            <p>Читаем результат: <span class="inline-code">2336.0</span> — эта ежедневная привычка — маленький праздник каждый год! Но почему <span class="inline-code">.0</span> в сумме в евро? Потому что <span class="inline-code">coffee_price</span> — это <span class="inline-code">float</span>, и если в операции участвует десятичное число, то результат тоже будет десятичным числом. (Деление с <span class="inline-code">/</span> всегда дает <span class="inline-code">float</span>, даже для <span class="inline-code">6 / 2</span>.) Типы из раздела 3 спокойно работают.</p>
-        </section>
+yearly_cost = coffee_price * cups_per_day * days_per_year
+print("Кофе в год, в евро:")
+print(yearly_cost)
+<span class="output">Кофе в год, в евро:
+2336.0</span></code></pre>
 
-        <!-- 5. f-строки -->
-        <section>
-            <h2><i class="fas fa-font"></i> 5. Струны и f-струны — о ваших результатах</h2>
-            <p>Простое число (<span class="inline-code">2336.0</span>) — это не результат, а "Кофе обходится вам в 2336 евро в год" — результат. Объединение текста и значений — настолько распространенная задача, что в Python для нее есть специальный инструмент: <strong>f-строка</strong>.</p>
-            <p>Поставьте <span class="inline-code">f</span> перед открывающей кавычкой, и вы сможете заключить любую переменную или небольшое вычисление в фигурные скобки <span class="inline-code">{ }</span>. После двоеточия можно добавить инструкцию форматирования; чаще всего при работе с данными используются <span class="inline-code">:.2f</span> (ровно два знака после запятой) и <span class="inline-code">:,</span> (разделитель тысяч).</p>
+        <p>Результат <code>2336.0</code> — с точкой, потому что <code>coffee_price</code> это <code>float</code>. Деление <code>/</code> тоже всегда даёт <code>float</code>, даже <code>6 / 2</code>.</p>
 
-            <div class="code-block">
-                name = "Alice"<br>
-                age = 25<br><br>
-                <span class="comment"># Embedding values — even small calculations work inside { }</span><br>
-                print(f"{name} is
+        <!-- 5 -->
+        <h2>5. f-строки — красивый вывод</h2>
+        <p>Число <code>2336.0</code> — это не результат, а «Кофе обходится в 2336 евро в год» — результат. Для соединения текста и значений есть f-строки.</p>
+        <p>Поставьте <code>f</code> перед кавычкой и используйте <code>{ }</code> для вставки значений:</p>
+
+<pre><code>name = "Alice"
+age = 25
+
+print(f"{name} is {age} years old.")
+print(f"Next year, {name} will be {age + 1}.")
+
+<span class="comment"># Форматирование чисел</span>
+yearly_cost = 2336.0
+print(f"Кофе в год: {yearly_cost:.2f} евро")
+print(f"Удобно: €{yearly_cost:,.2f}")
+<span class="output">Alice is 25 years old.
+Next year, Alice will be 26.
+Кофе в год: 2336.00 евро
+Удобно: €2,336.00</span></code></pre>
+
+        <p>Полезные форматы:</p>
+        <ul>
+            <li><code>:.2f</code> — ровно 2 знака после запятой</li>
+            <li><code>:,</code> — разделитель тысяч</li>
+        </ul>
+
+        <div class="task">
+            <strong>🎯 Попробуйте:</strong> счёт 63.75 € разделите на 4 человека. Выведите: <code>Each of the 4 guests pays 15.94 euros.</code>
+        </div>
+
+<pre><code>bill = 63.75
+people = 4
+
+<span class="comment"># per_person = ...</span>
+<span class="comment"># print(f"...")</span></code></pre>
+
+        <details>
+            <summary>💡 Показать решение</summary>
+<pre><code>bill = 63.75
+people = 4
+
+per_person = bill / people
+print(f"Each of the {people} guests pays {per_person:.2f} euros.")
+<span class="output">Each of the 4 guests pays 15.94 euros.</span></code></pre>
+        </details>
+
+        <!-- 6 -->
+        <h2>6. Итоги</h2>
+        <p>Всё, что вы узнали в одном примере:</p>
+
+<pre><code>participants = 40
+meal_cost = 12.50
+days = 5
+
+total = participants * meal_cost * days
+print(f"Питание для {participants} участников на {days} дней:")
+print(f"Итого: €{total:,.2f}")
+<span class="output">Питание для 40 участников на 5 дней:
+Итого: €2,500.00</span></code></pre>
+
+        <p>Измените <code>participants</code> на 50 и перезапустите — весь отчёт обновится сам. Вот что такое анализ данных на Python.</p>
+
+        <!-- Ключевые выводы -->
+        <h2>🧠 Главное</h2>
+        <ul>
+            <li>Блокнот = текстовые ячейки + ячейки с кодом</li>
+            <li>Код запускается через <code>Shift + Enter</code></li>
+            <li>Python читает сверху вниз, <code>#</code> — комментарий</li>
+            <li>Переменные — коробки с именами в <code>snake_case</code></li>
+            <li>Четыре типа: <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code></li>
+            <li><code>"42"</code> — это текст, не число</li>
+            <li>Операторы: <code>+ - * / **</code></li>
+            <li>f-строки: <code>f"...{value}..."</code>, форматы <code>:.2f</code> и <code>:,</code></li>
+        </ul>
+
+        <hr>
+
+        <p style="text-align: center; color: #999; font-size: 14px;">
+            ➡️ Следующий блокнот: <strong>02_data_structures.ipynb</strong>
+        </p>
+
+    </div>
+</body>
+</html>
